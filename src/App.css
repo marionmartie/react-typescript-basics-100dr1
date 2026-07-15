@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+    --color-brand-primary: #61a7e5;
+    --color-surface-default: #3a3939;
+    --color-surface-primary: #5493ca;
+    --color-surface-secondary: #efefef;
+    --color-text-default: #ffffff;
+    --color-text-contrast: #000000;
+    --color-text-disabled: #77797b;
+}
+
+@layer base {
+    h1 { font-size: var(--text-2xl); }
+    h2 { font-size: var(--text-xl); }
+    h3 { font-size: var(--text-lg); }
+}
