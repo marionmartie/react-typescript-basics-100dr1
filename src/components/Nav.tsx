@@ -2,7 +2,7 @@
 
 const Nav = () => {
   return (
-    <nav>Pokedex</nav>
+    <nav className="bg-surface-primary font-bold text-2xl p-5">Pokedex</nav>
   )
 }
 

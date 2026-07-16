@@ -1,7 +1,12 @@
+import Nav from "./components/Nav"
+import Welcome from "./components/Welcome"
 
 const App = () => {
   return (
-    <div className="bg-surface-primary">Pokedex</div>
+    <>
+      <Nav />
+      <Welcome></Welcome>
+    </>
   )
 }
 
