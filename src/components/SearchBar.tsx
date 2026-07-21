@@ -14,8 +14,8 @@ const SearchBar = () => {
     const [searchInput, setSearchInput] = useState<string>("")
     const [isFormValid, setIsFormValid] = useState<boolean>(true)
     const [formMessage, setFormMessage] = useState<string>("")
-
-    const searchPokemon = useSearch((state) => state.setPokemonName)
+    
+    const fetchPokemon = useSearch((state) => state.fetchPokemon)
 
     const handleSubmit = (e:SubmitEvent) => {
         e.preventDefault()
@@ -24,7 +24,7 @@ const SearchBar = () => {
             setFormMessage( "Please enter a name!" )
             return false
         }
-        searchPokemon(searchInput)
+        fetchPokemon(searchInput)
     }
 
     return (
