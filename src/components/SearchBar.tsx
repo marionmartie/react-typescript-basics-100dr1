@@ -4,7 +4,7 @@ import { useSearch } from "../store/useSearch"
 
 const SearchButton = () => {
     return (
-        <button type="submit" className="bg-brand-primary p-2 rounded-sm">
+        <button type="submit" className="bg-brand-primary p-2 rounded-sm cursor-pointer hover:bg-brand-accent transition-colors">
             <Search color="white" />
         </button>
     )

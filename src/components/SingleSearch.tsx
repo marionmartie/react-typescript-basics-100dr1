@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useSearch } from '../store/useSearch'
 
 const SingleSearch = () => {    
