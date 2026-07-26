@@ -19,4 +19,11 @@
     h2 { font-size: var(--text-xl); }
     h3 { font-size: var(--text-lg); }
     footer p { font-size: var(--text-xs); }
+    a { 
+        color: var(--color-blue-400); 
+        text-decoration: underline;
+    }
+    a:hover { 
+        color: var(--color-blue-300); 
+    }
 }

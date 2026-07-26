@@ -1,6 +1,7 @@
 import { Search } from "lucide-react"
 import { useState, type ChangeEvent, type SubmitEvent } from "react"
 import { useSearch } from "../store/useSearch"
+import SuggestionBar from "./SuggestionBar"
 
 const SearchButton = () => {
     return (
@@ -34,6 +35,8 @@ const SearchBar = () => {
             <SearchButton />
             
             {!isFormValid && <p className="w-full text-text-contrast">{ formMessage }</p>}
+
+            <SuggestionBar />
         </form>
     )
 }
