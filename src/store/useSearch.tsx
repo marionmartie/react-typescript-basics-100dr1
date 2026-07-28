@@ -3,6 +3,14 @@ import {create} from 'zustand'
 type Pokemon = {
     name: string | null
     sprites: {front_default: string}
+    types: Array<PokemonType>
+}
+
+type PokemonType = {
+    type: {
+        name: string
+        url: string
+    }
 }
 
 type PokemonStore = {

@@ -1,4 +1,3 @@
-import Footer from "../components/Footer"
 import SearchBar from "../components/SearchBar"
 import SingleSearch from "../components/SingleSearch"
 import Welcome from "../components/Welcome"
@@ -21,8 +20,6 @@ const HomePage = () => {
           Search by Region
         </SearchBy>
       </div>
-
-      <Footer />
     </>
   )
 }

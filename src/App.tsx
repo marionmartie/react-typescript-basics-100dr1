@@ -1,12 +1,13 @@
-import React from 'react'
-import HomePage from './pages/HomePage'
+import Footer from './components/Footer'
 import Nav from './components/Nav'
+import { Outlet } from 'react-router'
 
 const App = () => {
   return (
     <>
       <Nav />
-      <HomePage />
+        <Outlet />
+      <Footer />
     </>
   )
 }
