@@ -1,6 +1,7 @@
 import {create} from 'zustand'
 
 type Pokemon = {
+    id: number
     name: string | null
     sprites: {front_default: string}
     types: Array<PokemonType>
