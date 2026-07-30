@@ -12,9 +12,9 @@ const SingleSearch = () => {
         { pokemon !== null && <img src={pokemon.sprites.front_default}  />}
 
         <div>
-            <p>Name: <Link to={`/details/${pokemon?.id}`}>{pokemon?.name}</Link></p>
+            <p className='capitalize'>Name: <Link to={`/details/${pokemon?.id}`}>{pokemon?.name}</Link></p>
             <p>{pokemon?.types.map( (el, index) => (
-                <span className='me-2' key={el.type.name}>Type {index+1}: {el.type.name}</span>
+                <span className='me-2 capitalize' key={el.type.name}>Type {index+1}: {el.type.name}</span>
             ))}</p>
         </div>
     </div>

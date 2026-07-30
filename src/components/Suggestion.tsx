@@ -10,7 +10,7 @@ const Suggestion = ({name}: SuggestionProp) => {
         fetchPokemon(pokemonName)
     }
     return (
-        <li>
+        <li className="capitalize">
             <a className="text-blue-400 hover:text-blue-500 cursor-pointer underline" onClick={() => handleClick(name)}>{name}</a>
         </li>
     )

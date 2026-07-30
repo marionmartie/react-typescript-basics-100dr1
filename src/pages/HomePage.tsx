@@ -8,7 +8,7 @@ const HomePage = () => {
   const searchName = useSearch((state) => state.pokemon?.name)
   return (
     <>
-      <Welcome></Welcome>
+      <Welcome />
       <SearchBar />
       { searchName !== '' && <SingleSearch /> }
 
