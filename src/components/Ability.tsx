@@ -7,7 +7,9 @@ type AbilityProps = {
 }
 
 const Ability = ({name}: AbilityProps) => {
-    const {ability, isLoading, error, fetchAbility} = useAbilityStore()
+    const {abilities, loadingNames, error, fetchAbility} = useAbilityStore()
+    const ability = abilities[name]
+    const isLoading = loadingNames.has(name)
 
     useEffect(() => {
         fetchAbility(name)
@@ -20,7 +22,7 @@ const Ability = ({name}: AbilityProps) => {
     if (isLoading) return <Loading />
     return (
         <div>
-            {enEffect?.short_effect}
+            {enEffect?.effect}
         </div>
     )
 }

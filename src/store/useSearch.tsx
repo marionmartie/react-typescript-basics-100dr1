@@ -49,8 +49,8 @@ type Ability = {
 }
 
 type AbilityStore = {
-    ability: Ability | null
-    isLoading: boolean
+    abilities: Record<string, Ability>
+    loadingNames: Set<string>
     error: string | null
     fetchAbility: (name: string) => Promise<void>
 }
@@ -74,20 +74,40 @@ export const useSearch = create<PokemonStore>()((set) => ({
     }
 }))
 
-export const useAbilityStore = create<AbilityStore>()((set) => ({
-    ability: null,
-    isLoading: false,
+export const useAbilityStore = create<AbilityStore>()((set, get) => ({
+    abilities: {},
+    loadingNames: new Set<string>,
     error: null,
+
     fetchAbility: async(name: string) => {
-        set({isLoading: true, error: null})
+        const {abilities, loadingNames} = get()
+
+        // Check if name is already cached, skip
+        if (abilities[name] || loadingNames.has(name)) return
+
+        set({loadingNames: new Set(loadingNames).add(name), error: null})
+
         try {
             const res = await fetch(`https://pokeapi.co/api/v2/ability/${name}`)
             if (!res.ok) throw new Error(`Ability ${name} not found`)
+
             const data: Ability = await res.json()
-            set({ability: data, isLoading: false})
+
+            set((state) => {
+                const nextLoading = new Set(state.loadingNames)
+                nextLoading.delete(name)
+                return {
+                    abilities: {...state.abilities, [name]: data},
+                    loadingNames: nextLoading
+                }
+            })
         } catch (err) {
             const message = err instanceof Error ? err.message : "An error fetching ability has occurred"
-            set({error: message, isLoading: false, ability: null})
+            set((state) => {
+                const nextLoading = new Set(state.loadingNames)
+                nextLoading.delete(name)
+                return {err: message, loadingNames: nextLoading}
+            })
         }
     }
 }))
