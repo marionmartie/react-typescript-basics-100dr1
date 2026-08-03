@@ -10,8 +10,9 @@ const HomePage = () => {
     <>
       <Welcome />
       <SearchBar />
-      { searchName !== '' && <SingleSearch name={searchName} /> }
-
+      { searchName && <SingleSearch name={searchName} /> }
+      
+ 
       <div className="max-w-5xl mx-auto px-8 my-8 flex flex-col md:flex-row gap-8">
         <SearchBy>
           Search by Type

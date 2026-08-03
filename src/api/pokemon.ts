@@ -12,11 +12,36 @@ export type Pokemon = {
             name: string
             url: string
         }
+    }[],
+    stats: {
+        base_stat: string
+        stat_name: string
+    }[],
+    abilities: {
+        ability: {
+            name: string
+        }
+    }[]
+}
+
+export type Ability = {
+    effect_entries: {
+        effect: string
+        language: {
+            name: string
+        }
+        short_effect: string
     }[]
 }
 
 export async function fetchPokemon(nameOrId: string | number): Promise<Pokemon> {
-    const res = await fetch (`${BASE_URL}/pokemon/${nameOrId}`)
+    const res = await fetch(`${BASE_URL}/pokemon/${nameOrId}`)
     if (!res.ok) throw new Error('Failed to fetch Pokemon')
     return res.json()
 }
+
+export async function fetchAbility(name: string): Promise<Ability> {
+    const res = await fetch(`${BASE_URL}/ability/${name}`)
+    if (!res.ok) throw new Error('Failed to fetch ability')
+    return res.json()
+} 

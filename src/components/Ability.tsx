@@ -1,21 +1,16 @@
 import { useEffect } from "react"
-import { useAbilityStore } from "../store/useSearch"
 import Loading from "./Loading"
+import { useAbility, usePokemon } from "../store/usePokemon"
 
 type AbilityProps = {
     name: string
 }
 
 const Ability = ({name}: AbilityProps) => {
-    const {abilities, loadingNames, error, fetchAbility} = useAbilityStore()
-    const ability = abilities[name]
-    const isLoading = loadingNames.has(name)
+    // const {abilities, loadingNames, error, fetchAbility} = useAbilityStore()
+    const {data, isLoading, isError, error} = useAbility(name)
 
-    useEffect(() => {
-        fetchAbility(name)
-    },[name, fetchAbility])
-
-    const enEffect = ability?.effect_entries.find(
+    const enEffect = data?.effect_entries.find(
         (entry) => entry.language.name === 'en'
     )
 
