@@ -1,17 +1,15 @@
-import { useSearch } from "../store/useSearch"
+import { usePokemon } from "../store/usePokemon"
 
-type SuggestionProp = {
-    name: string
-}
+const Suggestion = ({name}: {name: string}) => {
+    // const {data, isLoading, isError, error} = usePokemon(name)
 
-const Suggestion = ({name}: SuggestionProp) => {
-    const fetchPokemon = useSearch((state) => state.fetchPokemon)
-    const handleClick = (pokemonName: string) => {
-        fetchPokemon(pokemonName)
-    }
+    // const handleClick = (pokemonName: string) => {
+    //     data = usePokemon(pokemonName)
+    // }
     return (
         <li className="capitalize">
-            <a className="text-blue-400 hover:text-blue-500 cursor-pointer underline" onClick={() => handleClick(name)}>{name}</a>
+            {/* <a className="text-blue-400 hover:text-blue-500 cursor-pointer underline" onClick={() => handleClick(name)}>{name}</a> */}
+            <a className="text-blue-400 hover:text-blue-500 cursor-pointer underline">{name}</a>
         </li>
     )
 }

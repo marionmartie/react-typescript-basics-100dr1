@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAbility, fetchPokemon } from "../api/pokemon";
+import { fetchAbility, fetchPokemon, fetchRandomPokemon } from "../api/pokemon";
 import { pokemonKeys } from "../api/queryKeys";
 
 export function usePokemon(nameOrId: string | number) {
@@ -16,6 +16,14 @@ export function useAbility(name: string) {
         queryKey: pokemonKeys.ability(name),
         queryFn: () => fetchAbility(name),
         enabled: !!name,
+        staleTime: 1000 * 60 * 60
+    })
+}
+
+export function usePokemonList() {
+    return useQuery({
+        queryKey: pokemonKeys.list(),
+        queryFn: () => fetchRandomPokemon(),
         staleTime: 1000 * 60 * 60
     })
 }

@@ -34,6 +34,12 @@ export type Ability = {
     }[]
 }
 
+export type PokemonList = {
+    results: {
+        name: string
+    }[]
+}
+
 export async function fetchPokemon(nameOrId: string | number): Promise<Pokemon> {
     const res = await fetch(`${BASE_URL}/pokemon/${nameOrId}`)
     if (!res.ok) throw new Error('Failed to fetch Pokemon')
@@ -45,3 +51,10 @@ export async function fetchAbility(name: string): Promise<Ability> {
     if (!res.ok) throw new Error('Failed to fetch ability')
     return res.json()
 } 
+
+export async function fetchRandomPokemon(): Promise<PokemonList> {
+    const randomNumber = (Math.floor(Math.random() * 1348) + 1)
+    const res = await fetch(`${BASE_URL}/pokemon?limit=3&offset=${randomNumber}`)
+    if (!res.ok) throw new Error('Failed to fetch list of Pokemon')
+    return res.json()
+}

@@ -1,20 +1,21 @@
-import { useSuggestionStore } from "../store/useSuggestionStore"
-import { useEffect } from "react"
+import { usePokemonList } from "../store/usePokemon"
+import Loading from "./Loading"
 import Suggestion from "./Suggestion"
 
 const SuggestionBar = () => {
-    const {suggestions, generatesuggestions} = useSuggestionStore()
 
-    useEffect(() => {
-        generatesuggestions(3, 299)
-    }, [generatesuggestions])
+    const {data, isLoading, isError, error} = usePokemonList()
+
+    if (isLoading) return <Loading />
+    if (isError) return <>{error}</>
+    if (data === undefined) return <div>Empty data</div>
 
     return (
     <div className="w-full">
         <ul className="flex gap-2">
             <span className="text-text-contrast">Suggestions:</span>
-            {suggestions.map(({id, name}) => (
-                <Suggestion key={id} name={name} />
+            {data.results.map(({name}) => (
+                <Suggestion key={name} name={name} />
             ))}
         </ul>
     </div>
