@@ -6,7 +6,6 @@ type AbilityProps = {
 }
 
 const Ability = ({name}: AbilityProps) => {
-    // const {abilities, loadingNames, error, fetchAbility} = useAbilityStore()
     const {data, isLoading, isError, error} = useAbility(name)
 
     const enEffect = data?.effect_entries.find(
