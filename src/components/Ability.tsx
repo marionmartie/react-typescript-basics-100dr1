@@ -1,6 +1,5 @@
-import { useEffect } from "react"
 import Loading from "./Loading"
-import { useAbility, usePokemon } from "../store/usePokemon"
+import { useAbility } from "../store/usePokemon"
 
 type AbilityProps = {
     name: string
@@ -15,6 +14,7 @@ const Ability = ({name}: AbilityProps) => {
     )
 
     if (isLoading) return <Loading />
+    if (isError) return <>Error fetching data {error}</>
     return (
         <div>
             {enEffect?.effect}

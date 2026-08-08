@@ -6,7 +6,8 @@ const SingleSearch = () => {
     const {data, isLoading, isError, error} = usePokemon()
     
     if (isLoading) return <Loading />
-
+    if (isError) return <>Error fetching data {error}</>
+    
     return (
     <div className='max-w-5xl mx-auto px-8 my-8 text-text-contrast flex items-center'>        
         { data!.name !== null && <img src={data!.sprites.front_default}  />}

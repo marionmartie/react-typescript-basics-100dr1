@@ -15,8 +15,7 @@ const SearchBar = () => {
     const [searchInput, setSearchInput] = useState<string>("")
     const [isFormValid, setIsFormValid] = useState<boolean>(true)
     const [formMessage, setFormMessage] = useState<string>("")
-    
-    const pokemonName = useSearch((state) => state.pokemon)
+
     const setPokemonName = useSearch((state) => state.setPokemon)
 
     const handleSubmit = (e:SubmitEvent) => {
