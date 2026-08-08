@@ -2,8 +2,8 @@ import { usePokemon } from '../store/usePokemon'
 import Loading from './Loading'
 import { Link } from 'react-router'
 
-const SingleSearch = ({name}: {name: string}) => {    
-    const {data, isLoading, isError, error} = usePokemon(name)
+const SingleSearch = () => {    
+    const {data, isLoading, isError, error} = usePokemon()
     
     if (isLoading) return <Loading />
 

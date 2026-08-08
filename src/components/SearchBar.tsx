@@ -1,7 +1,7 @@
 import { Search } from "lucide-react"
 import { useState, type ChangeEvent, type SubmitEvent } from "react"
-import { useSearch } from "../store/useSearch"
 import SuggestionBar from "./SuggestionBar"
+import { useSearch } from "../store/useSearch"
 
 const SearchButton = () => {
     return (
@@ -16,7 +16,8 @@ const SearchBar = () => {
     const [isFormValid, setIsFormValid] = useState<boolean>(true)
     const [formMessage, setFormMessage] = useState<string>("")
     
-    const fetchPokemon = useSearch((state) => state.fetchPokemon)
+    const pokemonName = useSearch((state) => state.pokemon)
+    const setPokemonName = useSearch((state) => state.setPokemon)
 
     const handleSubmit = (e:SubmitEvent) => {
         e.preventDefault()
@@ -25,7 +26,7 @@ const SearchBar = () => {
             setFormMessage( "Please enter a name!" )
             return false
         }
-        fetchPokemon(searchInput)
+        setPokemonName(searchInput)
     }
 
     return (

@@ -9,7 +9,8 @@ const Details = () => {
     if (!params.pid) {
         return <div>Empty Parameters!</div>
     }
-    const {data, isLoading, isError, error} = usePokemon(params.pid)
+
+    const {data, isLoading, isError, error} = usePokemon()
 
     if (isLoading) return <Loading />
     if (isError) return <>{error}</>
@@ -30,7 +31,7 @@ const Details = () => {
                 <tbody>
                     {data.stats.map((el, index) => 
                     <tr key={index} className="">
-                        <th className="border px-2 py-1 text-left capitalize">{el.stat.name}</th>
+                        <th className="border px-2 py-1 text-left capitalize">{el.stat_name}</th>
                         <td className="border px-2 py-1">{el.base_stat}</td>
                     </tr>)}
                 </tbody>

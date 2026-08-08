@@ -55,23 +55,14 @@ type AbilityStore = {
     fetchAbility: (name: string) => Promise<void>
 }
 
-export const useSearch = create<PokemonStore>()((set) => ({
-    pokemon: null,
-    isLoading: false,
-    error: null,
-    fetchPokemon: async(name: string) => {
-        set({isLoading: true, error: null})
+type PokemonName = {
+    pokemon: string | number | null
+    setPokemon: (name: string | null) => void
+}
 
-        try {
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
-            if (!res.ok) throw new Error(`Pokemon ${name} not found`)
-            const data: Pokemon = await res.json()
-            set({pokemon: data, isLoading: false})
-        } catch (err) {
-            const message = err instanceof Error ? err.message : "An error has occurred"
-            set({error: message, isLoading: false, pokemon: null})
-        }
-    }
+export const useSearch = create<PokemonName>()((set) => ({
+    pokemon: '',
+    setPokemon: (name) => set({pokemon: name})
 }))
 
 export const useAbilityStore = create<AbilityStore>()((set, get) => ({
