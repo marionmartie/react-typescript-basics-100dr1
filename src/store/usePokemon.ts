@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAbility, fetchPokemon, fetchRandomPokemon } from "../api/pokemon";
+import { fetchAbility, fetchPokemon, fetchRandomPokemon, fetchTypes } from "../api/pokemon";
 import { pokemonKeys } from "../api/queryKeys";
 import { useSearch } from "./useSearch";
 
@@ -30,6 +30,14 @@ export function usePokemonList() {
     return useQuery({
         queryKey: pokemonKeys.list(),
         queryFn: () => fetchRandomPokemon(),
+        staleTime: 1000 * 60 * 60
+    })
+}
+
+export function useTypes() {
+    return useQuery({
+        queryKey: pokemonKeys.types(),
+        queryFn: () => fetchTypes(),
         staleTime: 1000 * 60 * 60
     })
 }

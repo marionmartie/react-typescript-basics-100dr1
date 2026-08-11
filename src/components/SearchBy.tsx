@@ -6,7 +6,7 @@ type SearchByProps = {
 
 const SearchBy = ({children}: SearchByProps) => {
   return (
-    <div className="bg-text-contrast rounded-lg px-2 py-4 w-full">
+    <div className="rounded-lg px-2 py-4 w-full border-text-contrast border text-text-contrast">
         {children}
     </div>
   )
