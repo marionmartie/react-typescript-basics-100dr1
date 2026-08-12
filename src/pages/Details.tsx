@@ -11,10 +11,10 @@ const Details = () => {
     const {data, isLoading, isError, error} = usePokemon()
 
     useEffect(() => {
-        if (data === undefined && params.pid) {
+        if (params.pid) {
             setPokemon(params.pid)
         }
-    }, [data, params.pid, setPokemon])
+    }, [params.pid, setPokemon])
     
     if (!params.pid) return <div>Empty Parameters!</div>
     if (isLoading) return <Loading />
@@ -46,7 +46,7 @@ const Details = () => {
             <ul className="list-disc ms-4">
                 {data?.abilities.map( (el, index) => 
                     <li key={index} className="capitalize">
-                        <p>{el.ability.name}</p>
+                        <p className="font-bold">{el.ability.name}</p>
                         <Ability name={el.ability.name} />
                     </li>
                 )}

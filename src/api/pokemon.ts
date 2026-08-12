@@ -49,6 +49,36 @@ export type Types = {
     }[]
 }
 
+export type Type = {
+    pokemon: {
+        pokemon: {
+            name: string
+        }
+    }[],
+    sprites: {
+        "generation-viii": {
+            "sword-shield": {
+                "symbol_icon": string
+            }
+        }
+    }
+}
+
+export type Generations = {
+    results: {
+        name: string
+    }[]
+}
+
+export type Generation = {
+    main_region: {
+        name: string
+    },
+    pokemon_species: {
+        name: string
+    }[]
+}
+
 export async function fetchPokemon(nameOrId: string | number): Promise<Pokemon> {
     const res = await fetch(`${BASE_URL}/pokemon/${nameOrId}`)
     if (!res.ok) throw new Error('Failed to fetch Pokemon')
@@ -71,5 +101,23 @@ export async function fetchRandomPokemon(): Promise<PokemonList> {
 export async function fetchTypes(): Promise<Types> {
     const res = await fetch(`${BASE_URL}/type/`)
     if (!res.ok) throw new Error('Failed to fetch types')
+    return res.json()
+}
+
+export async function fetchType(name: string): Promise<Type> {
+    const res = await fetch(`${BASE_URL}/type/${name}?limit=20`)
+    if (!res.ok) throw new Error('Failed to fetch Pokemon in this type')
+    return res.json()
+}
+
+export async function fetchGenerations(): Promise<Generations> {
+    const res = await fetch(`${BASE_URL}/generation/`)
+    if (!res.ok) throw new Error('Failed to load generations')
+    return res.json()
+}
+
+export async function fetchGeneration(name: string): Promise<Generation> {
+    const res = await fetch(`${BASE_URL}/generation/${name}`)
+    if (!res.ok) throw new Error('Failed to load Pokemon from this generation')
     return res.json()
 }

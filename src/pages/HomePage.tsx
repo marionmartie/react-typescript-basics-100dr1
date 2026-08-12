@@ -19,7 +19,10 @@ const HomePage = () => {
             <Link to="/search/type">Search by Type</Link>
         </SearchBy>
         <SearchBy>
-          Search by Region
+          <Link to="/search/generation">Search by Generation</Link>
+        </SearchBy>
+        <SearchBy>
+          <Link to="/search/region">Search by Region</Link>
         </SearchBy>
       </div>
     </>

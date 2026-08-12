@@ -9,6 +9,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import SearchByType from './pages/SearchByType.tsx'
 import PokemonByType from './pages/PokemonByType.tsx'
+import SearchByGeneration from './pages/SearchByGeneration.tsx'
+import PokemonByGeneration from './pages/PokemonByGeneration.tsx'
 
 export const queryClient = new QueryClient()
 
@@ -24,6 +26,10 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/search/type' >
               <Route index element={<SearchByType />} />
               <Route path='/search/type/:name' element={<PokemonByType />} />
+            </Route>
+            <Route path='/search/generation'>
+              <Route index element={<SearchByGeneration />} />
+              <Route path='/search/generation/:name' element={<PokemonByGeneration />} />
             </Route>
           </Route>
         </Routes>

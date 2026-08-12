@@ -5,4 +5,6 @@ export const pokemonKeys = {
     ability: (name: string) => ['ability', name] as const,
     types: () => ['type'] as const,
     type: (nameOrId: string | number) => ['type', nameOrId] as const,
+    generations: () => ['generation'] as const,
+    generation: (name: string) => ['generation', name] as const,
 }
