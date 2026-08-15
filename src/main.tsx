@@ -12,6 +12,8 @@ import PokemonByType from './pages/PokemonByType.tsx'
 import SearchByGeneration from './pages/SearchByGeneration.tsx'
 import PokemonByGeneration from './pages/PokemonByGeneration.tsx'
 
+import './App.css'
+
 export const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(

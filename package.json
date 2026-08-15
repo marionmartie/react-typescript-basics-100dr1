@@ -37,6 +37,5 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.62.0",
     "vite": "^8.1.1"
-  },
-  "homepage": "https://marionmartie.github.io/react-typescript-basics-100dr1/"
+  }
 }
