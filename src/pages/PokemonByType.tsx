@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router"
 import { useType } from "../store/usePokemon"
 import Loading from "../components/Loading"
 import BackToTypes from "../components/BackToTypes"
+import Pagination from "../components/Pagination"
 
 type PokemonTypeProps = {
     arrayOfPokemon: { 
@@ -29,6 +30,8 @@ const PokemonByType = () => {
             </div>
 
             <PokemonList arrayOfPokemon={data.pokemon} />
+
+            <Pagination />
         </div>
     )
 }
