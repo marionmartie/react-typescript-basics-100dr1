@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAbility, fetchPokemon, fetchRandomPokemon, fetchTypes, fetchType, fetchGenerations, fetchGeneration } from "../api/pokemon";
+import { fetchAbility, fetchPokemon, fetchRandomPokemon, fetchTypes, fetchType, fetchGenerations, fetchGeneration, fetchLocations, fetchRegion, fetchRegions } from "../api/pokemon";
 import { pokemonKeys } from "../api/queryKeys";
 import { useSearch } from "./useSearch";
 
@@ -63,6 +63,32 @@ export function useGeneration(name: string) {
     return useQuery({
         queryKey: pokemonKeys.generation(name),
         queryFn: () => fetchGeneration(name),
+        enabled: !!name,
+        staleTime: 1000 * 60 * 60
+    })
+}
+
+export function useRegions() {
+    return useQuery({
+        queryKey: pokemonKeys.regions(),
+        queryFn: () => fetchRegions(),
+        staleTime: 1000 * 60 * 60
+    })
+}
+
+export function useRegion(name: string) {
+    return useQuery({
+        queryKey: pokemonKeys.region(name),
+        queryFn: () => fetchRegion(name),
+        enabled: !!name,
+        staleTime: 1000 * 60 * 60
+    })
+}
+
+export function useLocation(name: string) {
+    return useQuery({
+        queryKey: pokemonKeys.region(name),
+        queryFn: () => fetchLocations(name),
         enabled: !!name,
         staleTime: 1000 * 60 * 60
     })

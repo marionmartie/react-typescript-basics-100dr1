@@ -79,6 +79,24 @@ export type Generation = {
     }[]
 }
 
+export type Regions = {
+    results: {
+        name: string
+    }[]
+}
+
+export type Region = {
+    locations: {
+        name: string
+    }[]
+}
+
+export type Location = {
+    results: {
+        name: string
+    }[]
+}
+
 export async function fetchPokemon(nameOrId: string | number): Promise<Pokemon> {
     const res = await fetch(`${BASE_URL}/pokemon/${nameOrId}`)
     if (!res.ok) throw new Error('Failed to fetch Pokemon')
@@ -119,5 +137,22 @@ export async function fetchGenerations(): Promise<Generations> {
 export async function fetchGeneration(name: string): Promise<Generation> {
     const res = await fetch(`${BASE_URL}/generation/${name}`)
     if (!res.ok) throw new Error('Failed to load Pokemon from this generation')
+    return res.json()
+}
+
+export async function fetchRegions(): Promise<Regions> {
+    const res = await fetch(`${BASE_URL}/region/`)
+    if (!res.ok) throw new Error('Failed to load regions')
+    return res.json()
+}
+
+export async function fetchRegion(name: string): Promise<Regions> {
+    const res = await fetch(`${BASE_URL}/region/${name}`)
+    if (!res.ok) throw new Error('Failed to load Pokemon from this region')
+    return res.json()
+}
+export async function fetchLocations(name: string): Promise<Location> {
+    const res = await fetch(`${BASE_URL}/location/${name}`)
+    if (!res.ok) throw new Error('Failed to load location')
     return res.json()
 }

@@ -13,6 +13,8 @@ import SearchByGeneration from './pages/SearchByGeneration.tsx'
 import PokemonByGeneration from './pages/PokemonByGeneration.tsx'
 
 import './App.css'
+import SearchByRegion from './pages/SearchByRegion.tsx'
+import PokemonByRegion from './pages/PokemonByRegion.tsx'
 
 export const queryClient = new QueryClient()
 
@@ -32,6 +34,10 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/search/generation'>
               <Route index element={<SearchByGeneration />} />
               <Route path='/search/generation/:name' element={<PokemonByGeneration />} />
+            </Route>
+            <Route path='/search/region'>
+              <Route index element={<SearchByRegion />} />
+            <Route path='/search/region/:name' element={<PokemonByRegion />} />
             </Route>
           </Route>
         </Routes>

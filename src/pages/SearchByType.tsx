@@ -1,4 +1,4 @@
-import { use, useState, type ChangeEvent, type Dispatch, type SetStateAction } from "react"
+import { useState, type ChangeEvent, type Dispatch, type SetStateAction } from "react"
 import Loading from "../components/Loading"
 import { useTypes } from "../store/usePokemon"
 import { Link } from "react-router"

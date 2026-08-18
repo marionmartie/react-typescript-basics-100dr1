@@ -5,7 +5,7 @@ type PokemonEntry = {
     pokemon: {
         name: string,
     },
-    slot: number
+    slot?: number
 }
 
 type TypeResponse = {
@@ -15,7 +15,7 @@ type TypeResponse = {
 }
 
 async function fetchItems(page: number): Promise<TypeResponse> {
-    const res = await fetch(`https://pokeapi.co/api/v2/type/fighting`)
+    const res = await fetch(`https://pokeapi.co/api/v2/type/${page}`)
     if (!res.ok) throw new Error('Unable to fetch items')
     return res.json()
 }
@@ -25,7 +25,7 @@ const PAGE_SIZE = 10
 const Pagination = () => {
     const [page, setPage] = useState(1)    
 
-    const {data, isPending, error, isError, isPlaceholderData} = useQuery({
+    const {data, isPending, error, isError} = useQuery({
         queryKey: ['type'] as const,
         queryFn: () => fetchItems(page),
     })
